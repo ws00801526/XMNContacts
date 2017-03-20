@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'XMNContact_Example' do
+  pod 'XMNContact', :path => '../'
+
+  target 'XMNContact_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
