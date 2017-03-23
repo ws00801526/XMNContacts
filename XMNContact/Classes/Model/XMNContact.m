@@ -92,6 +92,21 @@
     return [[XMNPhoneNumber alloc] initWithStringValue:stringValue];
 }
 
+- (instancetype)copyWithZone:(NSZone *)zone {
+    
+    return [[XMNPhoneNumber allocWithZone:zone] initWithStringValue:self.stringValue];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    return [XMNPhoneNumber phoneNumberWithStringValue:[aDecoder decodeObjectForKey:@"phone"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    [aCoder encodeObject:self.stringValue forKey:@"phone"];
+}
+
 @end
 
 
@@ -166,6 +181,34 @@
 }
 #endif
 
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+    
+    return [[XMNPostalAddress allocWithZone:zone] initWithCountry:self.country
+                                                   ISOcountryCode:self.ISOcountryCode
+                                                            state:self.state
+                                                             city:self.city
+                                                           street:self.street
+                                                       postalCode:self.postalCode];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    return [[XMNPostalAddress alloc] initWithCountry:[aDecoder decodeObjectForKey:@"country"]
+            
+                                      ISOcountryCode:[aDecoder decodeObjectForKey:@"ISOcountryCode"]
+                                               state:[aDecoder decodeObjectForKey:@"state"] city:[aDecoder decodeObjectForKey:@"city"] street:[aDecoder decodeObjectForKey:@"street"] postalCode:[aDecoder decodeObjectForKey:@"postalCode"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    [aCoder encodeObject:self.country forKey:@"country"];
+    [aCoder encodeObject:self.ISOcountryCode forKey:@"ISOcountryCode"];
+    [aCoder encodeObject:self.state forKey:@"state"];
+    [aCoder encodeObject:self.city forKey:@"city"];
+    [aCoder encodeObject:self.street forKey:@"street"];
+    [aCoder encodeObject:self.postalCode forKey:@"postalCode"];
+}
 @end
 
 #pragma mark - XMNSocialProfile
@@ -209,6 +252,29 @@
 }
 #endif
 
+- (instancetype)copyWithZone:(NSZone *)zone {
+    
+    return [[XMNSocialProfile allocWithZone:zone] initWithService:self.service
+                                                         username:self.username
+                                                   userIdentifier:self.userIdentifier
+                                                        urlString:self.urlString];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    return [[XMNSocialProfile alloc] initWithService:[aDecoder decodeObjectForKey:@"service"]
+                                             username:[aDecoder decodeObjectForKey:@"username"]
+                                       userIdentifier:[aDecoder decodeObjectForKey:@"userIdentifier"]
+                                           urlString:[aDecoder decodeObjectForKey:@"urlString"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    [aCoder encodeObject:self.service forKey:@"service"];
+    [aCoder encodeObject:self.userIdentifier forKey:@"userIdentifier"];
+    [aCoder encodeObject:self.username forKey:@"username"];
+    [aCoder encodeObject:self.urlString forKey:@"urlString"];
+}
 @end
 
 #pragma mark - XMNInstantMessageAddress
@@ -242,6 +308,26 @@
                         username:instantMessageAddress.username];
 }
 #endif
+
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+    
+    return [[XMNInstantMessageAddress allocWithZone:zone] initWithService:self.service
+                                                                 username:self.username];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    return [[XMNInstantMessageAddress alloc] initWithService:[aDecoder decodeObjectForKey:@"service"]
+                                                                 username:[aDecoder decodeObjectForKey:@"username"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    [aCoder encodeObject:self.service forKey:@"service"];
+    [aCoder encodeObject:self.username forKey:@"username"];
+}
+
 @end
 
 
