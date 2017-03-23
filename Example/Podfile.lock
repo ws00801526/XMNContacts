@@ -1,0 +1,23 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - XMNContact (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - XMNContact (from `../`)
+
+EXTERNAL SOURCES:
+  XMNContact:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  XMNContact: 2df3ec57c8bc74fac31c421711f3e9bd6bfc7447
+
+PODFILE CHECKSUM: e40dc6a97edc65b70fe166e06139427ce69fda40
+
+COCOAPODS: 1.1.1

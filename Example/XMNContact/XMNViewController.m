@@ -8,22 +8,31 @@
 
 #import "XMNViewController.h"
 
+#import <XMNContact/XMNContactManager.h>
+#import <AddressBook/AddressBook.h>
+
+@import XMNContact;
+
 @interface XMNViewController ()
 
 @end
 
 @implementation XMNViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    __weak typeof(*&self) wSelf = self;
+    [[XMNContactManager sharedManager] loadContactsWithCompletionBlock:^(NSArray<XMNContact *> * _Nonnull contacts) {
+        __strong typeof(*&wSelf) self = wSelf;
+        NSLog(@"contact manager did load contacts :%@",contacts);
+    }];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc {
+    
+    NSLog(@"%@  dealloc",self);
 }
 
 @end

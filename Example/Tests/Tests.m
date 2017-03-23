@@ -7,6 +7,7 @@
 //
 
 @import XCTest;
+#import <Contacts/Contacts.h>
 
 @interface Tests : XCTestCase
 
